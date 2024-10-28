@@ -1,0 +1,19 @@
+@import "iiko-styles/style/variables";
+
+:host {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background: $light-blue;
+  border-bottom: 1px solid $light-gray !important;
+}
+a {
+  margin-right: 16px;
+  margin-left: 16px;
+  display: inline-block;
+  color: $info;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+@import "iiko-styles/style/variables";
+
+:host {
+  width: 200px;
+  height: calc(100vh - 60px);
+  background-color: $light-blue;
+  padding: 16px;
+}
+
+mat-list-item {
+  border-bottom: 1px solid $light-gray !important;
+  cursor: pointer !important;
+}
