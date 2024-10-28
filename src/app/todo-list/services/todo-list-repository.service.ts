@@ -20,12 +20,12 @@ export class TodoListRepositoryService extends FatherService {
 
   updateTodo(data: TodoItemInterface) {
     const url = '';
-    this.postO(url, data);
+    return this.postO(url, data);
   }
 
   createTodo(data: TodoItemInterface) {
     const url = '';
-    this.postO(url, data);
+    return this.postO(url, data);
 
   }
 

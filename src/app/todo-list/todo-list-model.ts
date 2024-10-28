@@ -1,7 +1,7 @@
 import { TodoListRepositoryService } from './services/todo-list-repository.service';
 import { TodoItemInterface } from './interfaces/todo-item.interface';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { lastValueFrom, map } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class TodoListModel {
@@ -21,7 +21,7 @@ export class TodoListModel {
     return data;
   }
 
-  addEditTodo(data: Partial<TodoItemInterface>) {
+  addEditTodo(data: TodoItemInterface) {
     if (data.id) {
       this.updateTodo(data);
     } else {
@@ -30,13 +30,21 @@ export class TodoListModel {
   }
 
 
-  private updateTodo(data: Partial<TodoItemInterface>) {
+  private updateTodo(data: TodoItemInterface) {
     console.log('updateTodo', data)
+    lastValueFrom(this.todoListRepositoryService.updateTodo(data))
+      .then(() => {
+        this.loadData();
+      })
 
   }
 
-  private createTodo(data: Partial<TodoItemInterface>) {
+  private createTodo(data: TodoItemInterface) {
     console.log('createTodo', data)
+    lastValueFrom(this.todoListRepositoryService.createTodo(data))
+      .then(() => {
+        this.loadData();
+      })
 
   }
 }
