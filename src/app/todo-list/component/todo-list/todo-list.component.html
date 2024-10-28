@@ -1,0 +1,33 @@
+<div class="d-flex mb16">
+  <div class="f-gr-1"></div>
+  <button mat-raised-button color="primary" (click)="add()" >Add</button>
+</div>
+
+@if(dataSource && dataSource.length > 0){
+  <mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="completed">
+      <mat-header-cell *matHeaderCellDef> Completed </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.completed ? 'yes': 'no'}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+} @else  {
+  <h3>Data not loaded</h3>
+}
+
+
+
